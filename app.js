@@ -26,7 +26,7 @@ const filterOption = document.querySelector(".filter-todo");
 todoButton.addEventListener("click",(e)=>addTodo(e));
 todoInput.addEventListener("input",(e)=>toggleButton(e));
 todoList.addEventListener("click", deleteCheck);
-filterOption.addEventListener('click', filterTodo);
+filterOption.addEventListener("click", filterTodo);
 
 //Functions
 todoButton.disabled = true;
@@ -99,44 +99,24 @@ function deleteCheck(e) {
 }
 function filterTodo(e) {
     const todos = todoList.childNodes;
-    // console.log(todos);
     todos.forEach(function(todo) {
-        switch(e.target.value) {
+        switch (e.target.value) {
             case "all":
                 todo.style.display = "flex";
             break;
             case "completed":
                 if (todo.classList.contains("completed")) {
-                    todo.style.dispslay = "flex";
+                    todo.style.display = "flex";
                 } else {
-                    todo.style.dispaly = "none";
+                    todo.style.display = "none";
                 }
+                break;
+            case "uncompleted":
+              if(!todo.classList.contains("completed")) {
+                todo.style.display = "flex";  
+              } else {
+                todo.style.display = "none";
+            }
         }
     });
 }
-
-
-
-//Start of firebase code
-// document.getElementById('todolist-form'). addEventListener('submit', saveList);
-// function saveList(e) {
-// 	e.preventDefault();
-//     var list=document.getElementById('item').value;
-//     console.log('hi');
-
-// 	saveName(list);
-// 	// console.log(myInput('subject'));
-// }
-// function saveName(a) {
-// db.collection('List of Todo').doc().set({
-// 	list:a,
-	
-// })
-
-// .then(function (){console.log('Contact Saved');})
-// .catch(function (error){console.log('Failed Contact');})
-// }
-
-
-// End of start of contact form 
-
